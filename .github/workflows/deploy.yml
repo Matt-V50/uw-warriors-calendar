@@ -28,6 +28,7 @@ jobs:
           
       - name: Freeze Flask app
         run: |
+          git checkout gh-pages calendar/ data/
           python build.py
           
       - name: Deploy to GitHub Pages

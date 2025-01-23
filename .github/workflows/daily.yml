@@ -29,6 +29,7 @@ jobs:
        run: |
          git config --local user.email "action@github.com"
          git config --local user.name "GitHub Action"
+         git checkout gh-pages
          git add -f data/
          git add -f calendar/
          git commit -m "Update data" || exit 0
