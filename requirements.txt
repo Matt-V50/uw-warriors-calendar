@@ -4,3 +4,4 @@ icalendar
 pandas
 gunicorn
 frozen-flask
+lxml
