@@ -167,7 +167,7 @@ def update_calendar(name, facilities, filter=None):
     for facility in facilities:
         data.extend(search(facility, start, end))
         
-    cal = PublicCalendar("Team Calendar", "Our team's public calendar")    
+    cal = PublicCalendar("UWaterloo Badminton Calendar", "From github repo https://github.com/FavorMylikes/uw-warriors-calendar/")
     for item in data:
         if filter and not filter(item):
             continue
@@ -176,7 +176,7 @@ def update_calendar(name, facilities, filter=None):
             start_date=parser.parse(item["start"]),
             end_date=parser.parse(item["end"]),
             description=item["title"],
-            location=item["location"]
+            location=item["location"].split(">")[-1].strip()
         )
         
         cal.add_event(event)
