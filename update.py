@@ -173,8 +173,8 @@ def update_calendar(name, facilities, filter=None):
             continue
         event = Event(
             title=item["title"],
-            start_date=parser.parse(start),
-            end_date=parser.parse(end),
+            start_date=parser.parse(item["start"]),
+            end_date=parser.parse(item["end"]),
             description=item["title"],
             location=item["location"]
         )
