@@ -20,5 +20,13 @@ jobs:
          python -m pip install --upgrade pip
          pip install -r requirements.txt
          
-     - name: Run script
-       run: python your_script.py
+     - name: Update
+       run: python update.py
+
+     - name: Commit and push if changed
+       run: |
+         git config --local user.email "action@github.com"
+         git config --local user.name "GitHub Action"
+         git add data/
+         git commit -m "Update data" || exit 0
+         git push

@@ -2,3 +2,5 @@ python-dateutil
 requests
 icalendar
 pandas
+gunicorn
+frozen-flask
