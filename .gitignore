@@ -3,3 +3,5 @@ data/*
 calendar/*
 !.gitkeep
 !.gitignore
+__pycache__
+build
