@@ -43,7 +43,7 @@
                ${text}
            `;
            const a = document.createElement('a');
-           a.href = url;
+           a.href = "." + url;
            button.onclick = () => navigator.clipboard.writeText(a.origin + a.pathname);
 
            container.appendChild(button);
