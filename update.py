@@ -1,8 +1,12 @@
+import json
+from pathlib import Path
+import pytz
 import requests
+from lxml import html
 from urllib.parse import quote
 from dateutil import parser
-
-from datetime import datetime, date
+from pandas import DataFrame as Df
+from datetime import datetime, date, timedelta
 from typing import List, Dict, Optional
 import uuid
 from icalendar import Calendar, Event as ICalEvent
@@ -66,17 +70,55 @@ class PublicCalendar:
             
         return cal.to_ical().decode('utf-8')
 
-start = "2025-01-19T00:00:00-05:00"
-end = "2025-01-26T00:00:00-05:00"
+def load_location():
+    facility_file = Path("data/facility.json")
+    if facility_file.exists() and (datetime.now() - datetime.fromtimestamp(facility_file.stat().st_mtime)).days < 1:
+        with facility_file.open("r") as f:
+            return json.load(f)
+    url = "https://warrior.uwaterloo.ca/Facility/GetSchedule"
 
-location_map = {
-    "4c8a432d-409a-46eb-a1f5-a92bf3b609a2": "PAC Small Gym"
-}
+    payload = {}
+    headers = {
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+    'cache-control': 'no-cache',
+    'pragma': 'no-cache',
+    'priority': 'u=0, i',
+    'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'none',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    'Cookie': 'ASP.NET_SessionId=23p2jcwuadgf1qzmmejgfxvu; __RequestVerificationToken=WRg5Vebf5z69FfTmkWuUZgghIgZB2rzU2Joq8LrL0V6sm0G4w1Ou7sobCiBNJSpQ6yh6GHYQzr8vguSsA3Xj_sIkDadXIkLGcBQGunI7Afc1'
+    }
 
-def update_calendar(selectedId, start, end):
+    response = requests.request("GET", url, headers=headers, data=payload)
+    
+
+    tree = html.fromstring(response.text)
+    options = tree.xpath('//*[@id="SelectedFacility"]/option')
+    data = []
+    for option in options:
+        value = option.attrib["value"]
+        text = option.text
+        data.append(dict(value=value, text=text))
+    with facility_file.open("w") as f:
+        json.dump(data, f)
+    return data
+
+def search(selectedId, start:str, end:str):
     """
     PAC: "4c8a432d-409a-46eb-a1f5-a92bf3b609a2"
     """
+    search_file = Path(f"data/{selectedId}.json")
+    if search_file.exists() and (datetime.now() - datetime.fromtimestamp(search_file.stat().st_mtime)).days < 1:
+        with search_file.open("r") as f:
+            return json.load(f)
+    
     start = quote(start)
     end = quote(end)
     base_url = "https://warrior.uwaterloo.ca/Facility/GetScheduleCustomAppointments?selectedId={selectedId}&start={start}&end={end}"
@@ -99,31 +141,54 @@ def update_calendar(selectedId, start, end):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     data = response.json()
-    cal = PublicCalendar("Team Calendar", "Our team's public calendar")
+    location_map = dict((item["value"], item["text"]) for item in load_location())
     
+    event_sets = []
     for item in data:
-        if "badminton" not in item["title"].lower():
-            continue
-        # convert it to ics format
+        title = item["title"]
         start = item["start"]
         end = item["end"]
-        # start = start.replace("T", " ")
-        # end = end.replace("T", " ")
-        title = item["title"]
-                # Add some example events
+        location = location_map.get(selectedId, "NA")
+        event_sets.append(dict(title=title, start=start, end=end, location=location, selectedId=selectedId))    
+    
+    with search_file.open("w") as f:
+        json.dump(event_sets, f)
+    
+    return event_sets
+
+def update_calendar(name, facilities, filter=None):
+    
+    # start = "2025-01-19T00:00:00-05:00"
+    
+    et = pytz.timezone('US/Eastern')
+    start = et.localize(datetime.today()).isoformat()
+    end = et.localize(datetime.today() + timedelta(days=7)).isoformat()
+    data = []
+    for facility in facilities:
+        data.extend(search(facility, start, end))
+        
+    cal = PublicCalendar("Team Calendar", "Our team's public calendar")    
+    for item in data:
+        if filter and not filter(item):
+            continue
         event = Event(
-            title=title,
+            title=item["title"],
             start_date=parser.parse(start),
             end_date=parser.parse(end),
             description=item["title"],
-            location=location_map.get(selectedId, "NA")
+            location=item["location"]
         )
-                
         
-
         cal.add_event(event)
-    with open(f"{selectedId}.ics", "w") as f:
+    calendar_file = Path(f"calendar/{name}.ics")
+    with calendar_file.open("w") as f:
         f.write(cal.get_ical())
-    
+
+def badminton_calendar():
+    facilities = ["4c8a432d-409a-46eb-a1f5-a92bf3b609a2",
+                  "a26cd06f-2f4e-4ec7-b946-0985984ba255"]
+    filter = lambda x: "badminton" in x["title"].lower()
+    update_calendar("badminton", facilities, filter)
+
 if __name__ == "__main__":
-    update_calendar("4c8a432d-409a-46eb-a1f5-a92bf3b609a2", start, end)
+    badminton_calendar()
