@@ -6,173 +6,173 @@ NAME:Team Calendar
 X-WR-CALNAME:Team Calendar
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:14062084-ecec-430d-956e-338032464280
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:6a190b40-299d-4550-bd40-910ea3305718
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:cd49f2ef-8faf-4bd8-902d-98cd21c61e59
-DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Winter 2025 - IU Badminton - IU Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:9913b436-6412-4273-ae2a-e66ab20ebcd0
-DESCRIPTION:Winter 2025 - IU Badminton - IU Badminton
-LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:a0f4d86a-d0c8-41ad-9213-0411714b2e10
-DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:7693db14-f613-42a5-ae52-940b3f2ff00f
-DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:5d8b2397-4c8b-44b0-a6b8-1951568b72dc
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:8406f13d-af3d-4b5e-8e3c-8070f1d85e40
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - IU Badminton - IU Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:3fdac72b-35cd-4595-952c-de34267062cf
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:6b4bbe24-110b-4529-87e6-c4ae732f1d9b
 DESCRIPTION:Winter 2025 - IU Badminton - IU Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:fe85737a-2e94-48ee-9a39-5bf1d9d96bc1
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:70cf8c3b-1546-4f32-a6e8-291a5b672e9b
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:ecbcbf3d-394a-498b-a881-a694aa2529a9
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:458fa99d-6869-4a18-bedd-fd7e5293951b
+DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:7c267f65-18ca-4955-bb70-cfa24f0b2f96
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - IU Badminton - IU Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:2d313ad3-d4bc-4896-ba1a-a14d919aaad4
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:f8e1fd47-6ead-4081-8029-30710610c6cc
 DESCRIPTION:Winter 2025 - IU Badminton - IU Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:785dc452-0cb2-4719-a092-ed81b435025e
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:3862542b-6fb6-4559-8ecd-e34f6e53c23f
+DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:dd516d55-8653-4266-a52d-5920fb923ffa
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - IU Badminton - IU Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:cf8066b5-4ebe-4924-983c-0d40ea11406f
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:00717b3c-8ebf-4cd5-8fba-fbaa68be03da
 DESCRIPTION:Winter 2025 - IU Badminton - IU Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:693f10f5-03b7-4854-a867-69380e48841f
-DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:25548556-96e8-4097-ae8f-fe897cd1d070
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:ed797416-b0e2-4fbe-ae44-8bf79b162b73
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - IU Badminton - IU Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:04a3595f-3398-4ae6-8968-22fe9e656539
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:7ee4b57c-b08a-4cd1-9e39-6cfec7ac5ea9
 DESCRIPTION:Winter 2025 - IU Badminton - IU Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:4535f9f0-f498-49d6-bb0c-0f6ae634e47e
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:78838667-50fc-4ebd-ae6a-8faa4ddf8ed6
+DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:7f1ed2ff-1c24-468e-b571-d66711cddce0
+DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Winter 2025 - IU Badminton - IU Badminton
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:16919431-e4d0-40f6-81b8-6bd5e6a3908d
+DESCRIPTION:Winter 2025 - IU Badminton - IU Badminton
+LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Winter 2025 - Open Rec Badminton - Open Rec Badminton
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:eadcd735-9856-440c-b412-a92d02d2377d
 DESCRIPTION:Winter 2025 - Open Rec Badminton - Open Rec Badminton
 LOCATION:All Facilities > Physical Activities Complex > PAC Small Gym
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Badminton Club - Winter 2025 Membership
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:0a3809f7-35fa-4e67-9479-7c57a4c05d8c
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:94bb7fa5-89ee-4d45-baaf-580079bb6290
 DESCRIPTION:Winter 2025 - Badminton Club - Winter 2025 Membership
 LOCATION:All Facilities > Columbia Icefield Building > CIF Gyms > CIF Gym 
  1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Badminton Club - Winter 2025 Membership
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:93120c72-e24d-4359-8863-65e967128b75
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:13bf84ba-6471-4574-87bf-0e8cb803f87a
 DESCRIPTION:Winter 2025 - Badminton Club - Winter 2025 Membership
 LOCATION:All Facilities > Columbia Icefield Building > CIF Gyms > CIF Gym 
  1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Badminton Club - Winter 2025 Membership
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:53c8bf68-605e-4e24-be73-b6a5b5b129d5
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:ff93096f-a950-4de1-ba56-cfcab4a95bac
 DESCRIPTION:Winter 2025 - Badminton Club - Winter 2025 Membership
 LOCATION:All Facilities > Columbia Icefield Building > CIF Gyms > CIF Gym 
  1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Badminton Club - Winter 2025 Membership
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:822585f5-5605-4ad6-8a93-65f63a9243d9
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:d7a1c6de-e555-4340-8265-7bccb08211d9
 DESCRIPTION:Winter 2025 - Badminton Club - Winter 2025 Membership
 LOCATION:All Facilities > Columbia Icefield Building > CIF Gyms > CIF Gym 
  1
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Winter 2025 - Badminton Club - Winter 2025 Membership
-DTSTART;TZID=America/Atikokan:20250123T220924
-DTEND;TZID=America/Atikokan:20250130T220924
-UID:cc5fb375-f0a8-410d-ab2c-e0bc19f64e45
+DTSTART;TZID=America/Atikokan:20250123T221506
+DTEND;TZID=America/Atikokan:20250130T221506
+UID:f01e5130-d80c-4724-baaa-16bec756e813
 DESCRIPTION:Winter 2025 - Badminton Club - Winter 2025 Membership
 LOCATION:All Facilities > Columbia Icefield Building > CIF Gyms > CIF Gym 
  1
