@@ -1,5 +1,7 @@
 name: daily Build
 on:
+ push:
+   branches: [ main ]
  schedule:
    - cron: '0 0 * * *'
  workflow_dispatch:      
@@ -27,6 +29,7 @@ jobs:
        run: |
          git config --local user.email "action@github.com"
          git config --local user.name "GitHub Action"
-         git add data/
+         git add -f data/
+         git add -f calendar/
          git commit -m "Update data" || exit 0
          git push

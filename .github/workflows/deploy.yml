@@ -3,6 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  workflow_run:
+    workflows: ["daily Build"]  # Name of your daily workflow
+    types:
+      - completed
+    branches:
+      - main  # or your default branch
   workflow_dispatch:
 
 jobs:
