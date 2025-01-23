@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Copy Links</title>
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script> -->
+   <!-- <link href="https://cdn.hugeicons.com/css/icons.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/@iconify-json/hugeicons@1.2.3/index.min.js"></script> -->
+   <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+
+   
+   <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> -->
+   <style>
+        .copy-btn {
+           display: flex;
+           align-items: center;
+           gap: 12px;
+           padding: 16px 24px;
+           margin: 12px;
+           background: #3b82f6;
+           color: white;
+           border: none;
+           border-radius: 8px;
+           cursor: pointer;
+           transition: background 0.2s;
+           font-size: 18px;
+       }
+       .copy-btn i {
+            font-size: 24px;
+       }
+       .copy-btn:hover {
+           background: #2563eb;
+       }
+   </style>
+</head>
+<body>
+   <div id="buttons"></div>
+
+   <script>
+       const links = [];
+           
+
+       const container = document.getElementById('buttons');
+
+       links.forEach(({text, url, sport}) => {
+           const button = document.createElement('button');
+           button.className = 'copy-btn';
+           button.innerHTML = `<i class="hgi-stroke hgi-{sport}"></i>
+               ${text}
+           `;
+           const a = document.createElement('a');
+           a.href = url;
+           button.onclick = () => navigator.clipboard.writeText(a.origin + a.pathname);
+
+           container.appendChild(button);
+       });
+   </script>
+</body>
+</html>
