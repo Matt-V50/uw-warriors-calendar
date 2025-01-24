@@ -37,9 +37,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: generated-data
-          path: |
-            calendar/
-            data/
+          path: ./
       
       - name: Set up Python
         uses: actions/setup-python@v4

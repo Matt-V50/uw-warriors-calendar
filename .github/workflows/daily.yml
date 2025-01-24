@@ -46,10 +46,6 @@ jobs:
 
      - name: Commit and push if changed
        run: |
-        ls -la
-
-     - name: Commit and push if changed
-       run: |
          git config --local user.email "action@github.com"
          git config --local user.name "GitHub Action"
          git add -f data/
