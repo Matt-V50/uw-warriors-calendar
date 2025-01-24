@@ -74,9 +74,11 @@ def load_location():
     facility_file = Path("data/facility.json")
     if facility_file.exists() and (datetime.now() - datetime.fromtimestamp(facility_file.stat().st_mtime)).days < 1:
         with facility_file.open("r") as f:
+            print(f"load from facility location map cache")
             return json.load(f)
+    print("update facility location map")
+    
     url = "https://warrior.uwaterloo.ca/Facility/GetSchedule"
-
     payload = {}
     headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -115,10 +117,12 @@ def search(selectedId, start:str, end:str):
     PAC: "4c8a432d-409a-46eb-a1f5-a92bf3b609a2"
     """
     search_file = Path(f"data/{selectedId}.json")
-    if search_file.exists() and (datetime.now() - datetime.fromtimestamp(search_file.stat().st_mtime)).days < 1:
+    # update every hour
+    if search_file.exists() and (datetime.now() - datetime.fromtimestamp(search_file.stat().st_mtime)).seconds < 3600:
         with search_file.open("r") as f:
+            print(f"load from facility Id {selectedId} cache")
             return json.load(f)
-    
+    print(f"update facility Id {selectedId}")
     start = quote(start)
     end = quote(end)
     base_url = "https://warrior.uwaterloo.ca/Facility/GetScheduleCustomAppointments?selectedId={selectedId}&start={start}&end={end}"
@@ -173,8 +177,8 @@ def update_calendar(name, facilities, filter=None):
             continue
         event = Event(
             title=item["title"],
-            start_date=parser.parse(item["start"]),
-            end_date=parser.parse(item["end"]),
+            start_date=et.localize(parser.parse(item["start"])),
+            end_date=et.localize(parser.parse(item["end"])),
             description=item["title"],
             location=item["location"].split(">")[-1].strip()
         )
