@@ -1,5 +1,7 @@
 # UW Badminton Calendar 🏸
 
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&style=flat)](https://matt-v50.github.io/uw-warriors-calendar/)
+
 🥳 Quick way to import UWaterloo badminton schedules into your calendar 📆
 
 ## ✨ Features
