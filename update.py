@@ -14,6 +14,8 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import threading
 import os
 
+TIMEZONE = 'US/Eastern'
+
 class Event:
     def __init__(self, title: str, start_date: datetime, end_date: Optional[datetime] = None, 
                  description: Optional[str] = None, location: Optional[str] = None):
@@ -56,7 +58,7 @@ class PublicCalendar:
     def get_ical(self) -> str:
         """Generate iCalendar format string."""
         cal = Calendar()
-        
+        cal.add('tzid', TIMEZONE)
         # Set calendar properties
         cal.add('prodid', f'-//{self.calendar_name}//EN')
         cal.add('version', '2.0')
@@ -164,7 +166,7 @@ def update_calendar(name, facilities, filter=None):
     
     # start = "2025-01-19T00:00:00-05:00"
     
-    et = pytz.timezone('US/Eastern')
+    et = pytz.timezone(TIMEZONE)
     start = et.localize(datetime.today()).isoformat()
     end = et.localize(datetime.today() + timedelta(days=14)).isoformat()
     data = []
