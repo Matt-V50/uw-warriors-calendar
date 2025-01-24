@@ -162,7 +162,7 @@ def update_calendar(name, facilities, filter=None):
     
     et = pytz.timezone('US/Eastern')
     start = et.localize(datetime.today()).isoformat()
-    end = et.localize(datetime.today() + timedelta(days=7)).isoformat()
+    end = et.localize(datetime.today() + timedelta(days=14)).isoformat()
     data = []
     for facility in facilities:
         data.extend(search(facility, start, end))

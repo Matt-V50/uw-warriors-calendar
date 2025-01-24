@@ -3,38 +3,80 @@
 <head>
    <title>Copy Links</title>
    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
-
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .copy-btn {
            display: flex;
            align-items: center;
-           gap: 12px;
-           padding: 16px 24px;
-           margin: 12px;
+           gap: 16px;
+           padding: 24px 36px;
+           margin: 16px;
            background: #3b82f6;
            color: white;
            border: none;
-           border-radius: 8px;
+           border-radius: 12px;
            cursor: pointer;
            transition: background 0.2s;
-           font-size: 18px;
+           font-size: 24px;
        }
        .copy-btn i {
-            font-size: 24px;
+            font-size: 32px;
        }
        .copy-btn:hover {
            background: #2563eb;
+       }
+       .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #22c55e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            opacity: 0;
+            transition: opacity 0.3s;
+       }
+       .toast.show {
+            opacity: 1;
+       }
+       @media (max-width: 768px) {
+           .copy-btn {
+               padding: 16px 24px;
+               font-size: 18px;
+               margin: 8px 0;
+           }
+           .copy-btn i {
+                font-size: 24px;
+           }
        }
    </style>
 </head>
 <body>
    <div id="buttons"></div>
+   <div id="toast" class="toast">Copied!</div>
 
    <script>
        const links = {{ links | tojson }};
-           
-
+       const toast = document.getElementById('toast');
        const container = document.getElementById('buttons');
+       function showToast() {
+           toast.classList.add('show');
+           setTimeout(() => toast.classList.remove('show'), 2000);
+       }
 
        links.forEach(({text, url, sport}) => {
            const button = document.createElement('button');
@@ -44,7 +86,10 @@
            `;
            const a = document.createElement('a');
            a.href = "." + url;
-           button.onclick = () => navigator.clipboard.writeText(a.origin + a.pathname);
+           button.onclick = () => {
+                navigator.clipboard.writeText(a.origin + a.pathname);
+                showToast();
+            }
 
            container.appendChild(button);
        });
