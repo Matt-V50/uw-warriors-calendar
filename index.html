@@ -10,14 +10,22 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
         #buttons {
+            margin-top: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
+        .footer {
+            padding: 0px;
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            margin-top: auto;
+        }
         .copy-btn {
            display: flex;
            align-items: center;
@@ -68,6 +76,11 @@
 <body>
    <div id="buttons"></div>
    <div id="toast" class="toast">Copied!</div>
+   <div class="footer">
+        <a href="https://matt-v50.github.io/uw-warriors-calendar/">
+            <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&style=flat" alt="GitHub">
+        </a>
+    </div>
 
    <script>
        const links = [{"sport": "badminton-shuttle", "text": "badminton", "url": "/badminton"}];
