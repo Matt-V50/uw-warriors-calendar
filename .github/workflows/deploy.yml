@@ -23,6 +23,10 @@ jobs:
             calendar/
             data/
 
+      - name: Commit and push if changed
+        run: |
+          ls -la
+
       - name: Save data
         uses: actions/upload-artifact@v3
         with:
