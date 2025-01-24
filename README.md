@@ -15,6 +15,11 @@
 - Open Outlook/Google Calendar 📅
 - Import URL as calendar subscription ✅
 
+## 🗓️ Outlook Case 
+
+![Demo](img/demo.png)
+
+
 ## 📲 Google Calendar Import
 ![Import to Google Calendar](img/google.png)
 - Settings → Add Calendar → From URL
