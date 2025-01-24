@@ -24,12 +24,32 @@ jobs:
          
      - name: Update
        run: python update.py
+      
+     - name: Save data
+       uses: actions/upload-artifact@v3
+       with:
+         name: generated-data
+         path: |
+           data/
+           calendar/
+
+     - name: Checkout gh-pages
+       uses: actions/checkout@v3
+       with: 
+         ref: gh-pages
+     
+     - name: Restore data
+       uses: actions/download-artifact@v3
+       with:
+         name: generated-data
+         path: |
+           data/
+           calendar/
 
      - name: Commit and push if changed
        run: |
          git config --local user.email "action@github.com"
          git config --local user.name "GitHub Action"
-         git checkout gh-pages
          git add -f data/
          git add -f calendar/
          git commit -m "Update data" || exit 0

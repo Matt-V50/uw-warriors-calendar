@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
   workflow_run:
     workflows: ["daily Build"]  # Name of your daily workflow
     types:
@@ -15,7 +15,31 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v3
+        with: 
+          ref: gh-pages
+          path: |
+            calendar/
+            data/
+
+      - name: Save data
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-data
+          path: |
+            calendar/
+            data/
+
       - uses: actions/checkout@v3
+
+      - name: Restore data
+        uses: actions/download-artifact@v3
+        with:
+          name: generated-data
+          path: |
+            calendar/
+            data/
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -28,7 +52,6 @@ jobs:
           
       - name: Freeze Flask app
         run: |
-          git checkout gh-pages calendar/ data/
           python build.py
           
       - name: Deploy to GitHub Pages
