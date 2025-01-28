@@ -3,7 +3,7 @@ on:
  push:
    branches: [ main ]
  schedule:
-   - cron: '0 * * * *'
+   - cron: '0 0 * * *'
  workflow_dispatch:      
 
 jobs:
@@ -21,6 +21,11 @@ jobs:
        run: |
          python -m pip install --upgrade pip
          pip install -r requirements.txt
+
+     - name: Set timezone
+       uses: szenius/set-timezone@v2.0
+       with:
+         timezoneLinux: "US/Eastern"
          
      - name: Update
        run: python update.py
