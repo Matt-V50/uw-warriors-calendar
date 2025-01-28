@@ -4,6 +4,8 @@
 
 🥳 Quick way to import UWaterloo badminton schedules into your calendar 📆
 
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FToronto&showPrint=0&showCalendars=0&src=MWVtb2twYWZtdXB0Ym1hbWNtdHB0bTU5cjF0aTNtM2RAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D81B60" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
 ## ✨ Features
 - 1-click import to Outlook/Google Calendar 🔄
 - Pre-formatted calendar entries ⚡️
