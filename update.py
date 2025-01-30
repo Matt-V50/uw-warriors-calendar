@@ -184,7 +184,7 @@ def update_calendar(name, facilities, filter=None):
             title=item["title"],
             start_date=et.localize(parser.parse(item["start"])),
             end_date=et.localize(parser.parse(item["end"])),
-            description=f"item['title']\nLast Update: {et.localize(datetime.now()).isoformat()}",
+            description=f"{item['title']}\nLast Update: {et.localize(datetime.now()).isoformat()}",
             location=item["location"].split(">")[-1].strip()
         )
         
