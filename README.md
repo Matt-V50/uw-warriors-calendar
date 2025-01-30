@@ -7,7 +7,7 @@
 ## ✨ Features
 - 1-click import to Outlook/Google Calendar 🔄
 - Pre-formatted calendar entries ⚡️
-- Update every **24 hours**
+- Update every **30 Minutes**
 - Show for next **14 days**
 
 ## 🚀 How to Use
