@@ -1,112 +1,208 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Copy Links</title>
-   <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <style>
-        body {
+    <title>UW Warriors Calendar</title>
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --warriors-black: #000000;
+            --warriors-gold: #FFD100;
+            --warriors-dark-gold: #E6BC00;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
         }
-        #buttons {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .footer {
-            padding: 0px;
-            width: 100%;
+
+        header {
+            background: var(--warriors-black);
+            color: white;
+            padding: 1rem;
             text-align: center;
-            align-items: center;
-            margin-top: auto;
+            border-bottom: 4px solid var(--warriors-gold);
         }
+
+        header h1 {
+            color: var(--warriors-gold);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .calendar-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border: 2px solid var(--warriors-black);
+        }
+
+        .calendar-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-self: center;
+            /* align-self: start; */
+        }
+
         .copy-btn {
-           display: flex;
-           align-items: center;
-           gap: 16px;
-           padding: 24px 36px;
-           margin: 16px;
-           background: #3b82f6;
-           color: white;
-           border: none;
-           border-radius: 12px;
-           cursor: pointer;
-           transition: background 0.2s;
-           font-size: 24px;
-       }
-       .copy-btn i {
-            font-size: 32px;
-       }
-       .copy-btn:hover {
-           background: #2563eb;
-       }
-       .toast {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--warriors-black);
+            color: var(--warriors-gold);
+            border: 2px solid var(--warriors-gold);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .copy-btn:hover {
+            background: var(--warriors-gold);
+            color: var(--warriors-black);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn i {
+            font-size: 1.5rem;
+        }
+
+        .toast {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: #22c55e;
-            color: white;
-            padding: 12px 24px;
+            background: var(--warriors-gold);
+            color: var(--warriors-black);
+            padding: 0.75rem 1.5rem;
             border-radius: 6px;
             opacity: 0;
             transition: opacity 0.3s;
-       }
-       .toast.show {
+            z-index: 1000;
+            font-weight: bold;
+            border: 2px solid var(--warriors-black);
+        }
+
+        .toast.show {
             opacity: 1;
-       }
-       @media (max-width: 768px) {
-           .copy-btn {
-               padding: 16px 24px;
-               font-size: 18px;
-               margin: 8px 0;
-           }
-           .copy-btn i {
-                font-size: 24px;
-           }
-       }
-   </style>
+        }
+
+        footer {
+            background: var(--warriors-black);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-top: 4px solid var(--warriors-gold);
+        }
+
+        footer a {
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .calendar-iframe {
+                height: 400px;
+            }
+
+            .copy-btn {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FToronto&showPrint=0&showCalendars=0&src=MWVtb2twYWZtdXB0Ym1hbWNtdHB0bTU5cjF0aTNtM2RAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D81B60" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-   <div id="toast" class="toast">Copied!</div>
-   <div class="footer">
+    <header>
+        <h1>UW Warriors Calendar</h1>
+    </header>
+
+    <main>
+        <div class="calendar-container">
+            <iframe 
+                src="https://calendar.google.com/calendar/u/0/embed?wkst=2&mode=WEEK&height=600&wkst=1&ctz=America/Toronto&showPrint=0&showCalendars=0&src=MWVtb2twYWZtdXB0Ym1hbWNtdHB0bTU5cjF0aTNtM2RAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23D81B60" 
+                class="calendar-iframe"
+                scrolling="no">
+            </iframe>
+        </div>
+
+        <div class="buttons-container" id="buttons">
+            <!-- Buttons will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <div id="toast" class="toast">Copied!</div>
+
+    <footer>
         <a href="https://matt-v50.github.io/uw-warriors-calendar/">
-            <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&style=flat" alt="GitHub">
+            <img src="https://img.shields.io/badge/github-%23FFCF00.svg?style=for-the-badge&logo=github&logoColor=black&style=flat" alt="GitHub">
         </a>
-   </div>
-   <div id="buttons"></div>
+    </footer>
 
-   <script>
-       const links = {{ links | tojson }};
-       const toast = document.getElementById('toast');
-       const container = document.getElementById('buttons');
-       function showToast() {
-           toast.classList.add('show');
-           setTimeout(() => toast.classList.remove('show'), 2000);
-       }
+    <script>
+        const links = {{ links | tojson }};
+        const toast = document.getElementById('toast');
+        const container = document.getElementById('buttons');
 
-       links.forEach(({text, url, sport}) => {
-           const button = document.createElement('button');
-           button.className = 'copy-btn';
-           button.innerHTML = `<i class="hgi-stroke hgi-${sport}"></i>
-               ${text}
-           `;
-           const a = document.createElement('a');
-           a.href = "." + url;
-           button.onclick = () => {
+        function showToast() {
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        links.forEach(({text, url, sport}) => {
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.innerHTML = `
+                <i class="hgi-stroke hgi-${sport}"></i>
+                ${text}
+            `;
+            const a = document.createElement('a');
+            a.href = "." + url;
+            button.onclick = () => {
                 navigator.clipboard.writeText(a.origin + a.pathname);
                 showToast();
             }
 
-           container.appendChild(button);
-       });
-   </script>
+            container.appendChild(button);
+        });
+    </script>
 </body>
 </html>
