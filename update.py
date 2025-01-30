@@ -173,7 +173,12 @@ def update_calendar(name, facilities, filter=None):
     for facility in facilities:
         data.extend(search(facility, start, end))
         
-    cal = PublicCalendar("UWaterloo Badminton Calendar", "From github repo https://github.com/FavorMylikes/uw-warriors-calendar/")
+    description = f"""Badminton events from UWaterloo Warrior
+    From github repo https://github.com/FavorMylikes/uw-warriors-calendar/
+    
+    Last Update: {et.localize(datetime.now()).isoformat()}
+"""
+    cal = PublicCalendar("UWaterloo Badminton Calendar", description)
     for item in data:
         if filter and not filter(item):
             continue
