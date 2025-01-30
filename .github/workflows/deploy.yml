@@ -22,7 +22,7 @@ jobs:
           path: ./
 
       - name: Save data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: generated-data
           path: |
@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Restore data
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: generated-data
           path: ./
