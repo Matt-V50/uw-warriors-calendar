@@ -175,8 +175,6 @@ def update_calendar(name, facilities, filter=None):
         
     description = f"""Badminton events from UWaterloo Warrior
     From github repo https://github.com/FavorMylikes/uw-warriors-calendar/
-    
-    Last Update: {et.localize(datetime.now()).isoformat()}
 """
     cal = PublicCalendar("UWaterloo Badminton Calendar", description)
     for item in data:
@@ -186,7 +184,7 @@ def update_calendar(name, facilities, filter=None):
             title=item["title"],
             start_date=et.localize(parser.parse(item["start"])),
             end_date=et.localize(parser.parse(item["end"])),
-            description=item["title"],
+            description=f"item['title']\nLast Update: {et.localize(datetime.now()).isoformat()}",
             location=item["location"].split(">")[-1].strip()
         )
         
