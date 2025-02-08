@@ -194,8 +194,12 @@ def update_calendar(name, facilities, filter=None):
         f.write(cal.get_ical())
 
 def badminton_calendar():
-    facilities = ["4c8a432d-409a-46eb-a1f5-a92bf3b609a2",
-                  "a26cd06f-2f4e-4ec7-b946-0985984ba255"]
+    facilities = ["4c8a432d-409a-46eb-a1f5-a92bf3b609a2",  # PAC Small Gym
+                  "a26cd06f-2f4e-4ec7-b946-0985984ba255",  # cif gym 1
+                  "bfddec09-d9a6-4915-8aac-f97b28f95d0d",  # cif gym 2
+                  "3df2fa09-2866-49e3-8526-6705450be265",  # cif gym 3
+                  "a3e9c00d-5aa7-45ea-ad73-f62c293856a8",  # PAC Main Gym
+                  ]
     filter = lambda x: "badminton" in x["title"].lower()
     update_calendar("badminton", facilities, filter)
 
