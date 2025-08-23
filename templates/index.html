@@ -191,21 +191,33 @@
             <img src="https://img.shields.io/badge/github-%23FFCF00.svg?style=for-the-badge&logo=github&logoColor=black&style=flat" alt="GitHub">
         </a>
     </footer>
+    </script>
+        <script>
+        const links = {{ links | tojson }};
 
-    <script>
-        // Demo functionality for buttons
-        const buttons = document.querySelectorAll('.copy-btn');
         const toast = document.getElementById('toast');
+        const container = document.getElementById('buttons');
 
         function showToast() {
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
-        buttons.forEach(button => {
+        links.forEach(({text, url, sport}) => {
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.innerHTML = `
+                <i class="hgi-stroke hgi-${sport}"></i>
+                ${text}
+            `;
+            const a = document.createElement('a');
+            a.href = "." + url;
             button.onclick = () => {
+                navigator.clipboard.writeText(a.origin + a.pathname);
                 showToast();
-            };
+            }
+
+            container.appendChild(button);
         });
     </script>
 </body>
