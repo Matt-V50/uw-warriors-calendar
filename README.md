@@ -2,6 +2,10 @@
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&style=flat)](https://matt-v50.github.io/uw-warriors-calendar/)
 
+## 📰 News
+
+- **2026-10-26:** The calendar updater now uses UWaterloo's DevExtreme Scheduler endpoint and filters appointments by facility. It maps the new response fields into the existing calendar event format.
+
 🥳 Quick way to import UWaterloo badminton schedules into your calendar 📆
 
 ## ✨ Features

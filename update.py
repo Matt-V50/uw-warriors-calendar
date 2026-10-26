@@ -3,7 +3,6 @@ from pathlib import Path
 import pytz
 import requests
 from lxml import html
-from urllib.parse import quote
 from dateutil import parser
 from pandas import DataFrame as Df
 from datetime import datetime, date, timedelta
@@ -125,35 +124,27 @@ def search(selectedId, start:str, end:str):
             print(f"load from facility Id {selectedId} cache")
             return json.load(f)
     print(f"update facility Id {selectedId}")
-    start = quote(start)
-    end = quote(end)
-    base_url = "https://warrior.uwaterloo.ca/Facility/GetScheduleCustomAppointments?selectedId={selectedId}&start={start}&end={end}"
-    url = base_url.format(selectedId=selectedId, start=start, end=end)
-
-    payload = {}
+    url = "https://warrior.uwaterloo.ca/Facility/GetScheduleCustomAppointmentsForDevExtremeScheduler"
     headers = {
-        'accept': '*/*',
-        'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
-        'priority': 'u=1, i',
-        'sec-ch-ua': '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Linux"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-        'Cookie': 'ASP.NET_SessionId=3x5dkosajrpdryl11payil0m'
+        'accept': 'application/json, text/javascript, */*; q=0.01',
+        'x-requested-with': 'XMLHttpRequest',
     }
 
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = requests.get(
+        url,
+        params={"selectedFacilityId": selectedId, "start": start, "end": end},
+        headers=headers,
+        timeout=30,
+    )
+    response.raise_for_status()
     data = response.json()
     location_map = dict((item["value"], item["text"]) for item in load_location())
     
     event_sets = []
     for item in data:
-        title = item["title"]
-        start = item["start"]
-        end = item["end"]
+        title = item["Text"]
+        start = item["StartDate"]
+        end = item["EndDate"]
         location = location_map.get(selectedId, "NA")
         event_sets.append(dict(title=title, start=start, end=end, location=location, selectedId=selectedId))    
     
