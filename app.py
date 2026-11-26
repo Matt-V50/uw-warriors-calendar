@@ -4,7 +4,8 @@ import os
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 sport_map = {
-    "badminton": "badminton-shuttle"
+    "badminton": "badminton-shuttle",
+    "pickleball": "tennis-ball"
 }
 @app.route('/')
 def index():

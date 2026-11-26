@@ -14,6 +14,13 @@ import threading
 import os
 
 TIMEZONE = 'US/Eastern'
+GYM_FACILITIES = [
+    "4c8a432d-409a-46eb-a1f5-a92bf3b609a2",  # PAC Small Gym
+    "a26cd06f-2f4e-4ec7-b946-0985984ba255",  # CIF Gym 1
+    "bfddec09-d9a6-4915-8aac-f97b28f95d0d",  # CIF Gym 2
+    "3df2fa09-2866-49e3-8526-6705450be265",  # CIF Gym 3
+    "a3e9c00d-5aa7-45ea-ad73-f62c293856a8",  # PAC Main Gym
+]
 
 class Event:
     def __init__(self, title: str, start_date: datetime, end_date: Optional[datetime] = None, 
@@ -164,10 +171,10 @@ def update_calendar(name, facilities, filter=None):
     for facility in facilities:
         data.extend(search(facility, start, end))
         
-    description = f"""Badminton events from UWaterloo Warrior
+    description = f"""{name.title()} events from UWaterloo Warrior
     From github repo https://github.com/FavorMylikes/uw-warriors-calendar/
 """
-    cal = PublicCalendar("UWaterloo Badminton Calendar", description)
+    cal = PublicCalendar(f"UWaterloo {name.title()} Calendar", description)
     for item in data:
         if filter and not filter(item):
             continue
@@ -185,14 +192,18 @@ def update_calendar(name, facilities, filter=None):
         f.write(cal.get_ical())
 
 def badminton_calendar():
-    facilities = ["4c8a432d-409a-46eb-a1f5-a92bf3b609a2",  # PAC Small Gym
-                  "a26cd06f-2f4e-4ec7-b946-0985984ba255",  # cif gym 1
-                  "bfddec09-d9a6-4915-8aac-f97b28f95d0d",  # cif gym 2
-                  "3df2fa09-2866-49e3-8526-6705450be265",  # cif gym 3
-                  "a3e9c00d-5aa7-45ea-ad73-f62c293856a8",  # PAC Main Gym
-                  ]
     filter = lambda x: "badminton" in x["title"].lower()
-    update_calendar("badminton", facilities, filter)
+    update_calendar("badminton", GYM_FACILITIES, filter)
+
+def pickleball_calendar():
+    def is_selected_pickleball_event(item):
+        title = item["title"].lower()
+        return "pickleball club" in title or (
+            "open rec" in title and "pickleball" in title
+        )
+
+    update_calendar("pickleball", GYM_FACILITIES, is_selected_pickleball_event)
 
 if __name__ == "__main__":
     badminton_calendar()
+    pickleball_calendar()
