@@ -7,6 +7,11 @@ sport_map = {
     "badminton": "badminton-shuttle",
     "pickleball": "tennis-ball"
 }
+calendar_ids = {
+    "badminton": "NDI2ODljYmIyZDEwZTY4N2RjNTA1NmM2NTFlMzk3ZWI0YTdiYWNiYzBkMGNiOWRhNmY4ZmY1ZWJiYTZjOWY1Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
+    "pickleball": "MjU3MzczNjVmYjdmYjM3ZDgyZDgwYzBiYmE2OGM0ZDk5YmJhZDVlNWU3NDdlMTVlOTg2M2ZiNmU3OTc4NDk5MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"
+}
+
 @app.route('/')
 def index():
     links = []
@@ -15,7 +20,12 @@ def index():
             links.append({ "text": calendar.stem, 
                           "url": f"/{calendar.stem}", 
                           "sport": sport_map.get(calendar.stem, "workout-run") })
-    return render_template('index.html', links=links)
+    return render_template(
+        'index.html',
+        links=links,
+        calendar_ids=calendar_ids,
+        initial_sport="badminton"
+    )
 
 @app.route('/<path:subpath>')
 def browse(subpath=''):

@@ -16,7 +16,7 @@
 - Pickleball calendar includes **Pickleball Club** and **Open Rec** events at the gyms
 
 ## 🚀 How to Use
-- Click button to copy calendar link 📋
+- Click a sport button to view its Google Calendar, or use the copy button beside it to copy that sport's subscription link 📋
 - Open Outlook/Google Calendar 📅
 - Import URL as calendar subscription ✅
 
