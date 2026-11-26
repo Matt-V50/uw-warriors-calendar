@@ -71,10 +71,16 @@
             align-self: start;
         }
 
-        .copy-btn {
+        .sport-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .sport-btn {
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex: 1;
             padding: 1rem 1.5rem;
             background: var(--warriors-black);
             color: var(--warriors-gold);
@@ -83,7 +89,35 @@
             cursor: pointer;
             transition: all 0.2s;
             font-size: 1rem;
-            width: 100%;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .sport-btn:hover,
+        .sport-btn.active {
+            background: var(--warriors-gold);
+            color: var(--warriors-black);
+        }
+
+        .sport-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .sport-btn i {
+            font-size: 1.5rem;
+        }
+
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--warriors-black);
+            color: var(--warriors-gold);
+            border: 2px solid var(--warriors-gold);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
@@ -144,8 +178,12 @@
                 height: 400px;
             }
 
-            .copy-btn {
+            .sport-btn {
                 padding: 0.75rem 1rem;
+            }
+
+            .copy-btn {
+                padding: 0.75rem;
             }
 
             .buttons-container {
@@ -162,8 +200,9 @@
     <main>
         <div class="calendar-container">
             <iframe 
-                src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FToronto&showPrint=0&mode=WEEK&showCalendars=0&src=NDI2ODljYmIyZDEwZTY4N2RjNTA1NmM2NTFlMzk3ZWI0YTdiYWNiYzBkMGNiOWRhNmY4ZmY1ZWJiYTZjOWY1Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA" 
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FToronto&showPrint=0&mode=WEEK&showCalendars=0&src=NDI2ODljYmIyZDEwZTY4N2RjNTA1NmM2NTFlMzk3ZWI0YTdiYWNiYzBkMGNiOWRhNmY4ZmY1ZWJiYTZjOWY1Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA"
                 class="calendar-iframe"
+                id="calendar-frame"
                 scrolling="no">
             </iframe>
         </div>
@@ -179,34 +218,72 @@
             <img src="https://img.shields.io/badge/github-%23FFCF00.svg?style=for-the-badge&logo=github&logoColor=black&style=flat" alt="GitHub">
         </a>
     </footer>
-    </script>
-        <script>
+    <script>
         const links = [{"sport": "tennis-ball", "text": "pickleball", "url": "/pickleball"}, {"sport": "badminton-shuttle", "text": "badminton", "url": "/badminton"}];
+        const calendarIds = {"badminton": "NDI2ODljYmIyZDEwZTY4N2RjNTA1NmM2NTFlMzk3ZWI0YTdiYWNiYzBkMGNiOWRhNmY4ZmY1ZWJiYTZjOWY1Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t", "pickleball": "MjU3MzczNjVmYjdmYjM3ZDgyZDgwYzBiYmE2OGM0ZDk5YmJhZDVlNWU3NDdlMTVlOTg2M2ZiNmU3OTc4NDk5MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t"};
 
         const toast = document.getElementById('toast');
         const container = document.getElementById('buttons');
+        const calendarFrame = document.getElementById('calendar-frame');
+        const embedUrl = 'https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FToronto&showPrint=0&mode=WEEK&showCalendars=0&src=';
 
-        function showToast() {
+        function showToast(message) {
+            toast.textContent = message;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
         links.forEach(({text, url, sport}) => {
-            const button = document.createElement('button');
-            button.className = 'copy-btn';
-            button.innerHTML = `
+            const actions = document.createElement('div');
+            actions.className = 'sport-actions';
+
+            const selectButton = document.createElement('button');
+            selectButton.className = 'sport-btn';
+            selectButton.type = 'button';
+            selectButton.setAttribute('aria-pressed', 'false');
+            selectButton.innerHTML = `
                 <i class="hgi-stroke hgi-${sport}"></i>
                 ${text}
             `;
-            const a = document.createElement('a');
-            a.href = "." + url;
-            button.onclick = () => {
-                navigator.clipboard.writeText(a.origin + a.pathname);
-                showToast();
-            }
+            selectButton.onclick = () => {
+                const calendarId = calendarIds[text.toLowerCase()];
+                if (!calendarId) {
+                    return;
+                }
 
-            container.appendChild(button);
+                calendarFrame.src = `${embedUrl}${encodeURIComponent(calendarId)}&color=%238E24AA`;
+                container.querySelectorAll('.sport-btn').forEach(button => {
+                    const selected = button === selectButton;
+                    button.classList.toggle('active', selected);
+                    button.setAttribute('aria-pressed', String(selected));
+                });
+            };
+
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-btn';
+            copyButton.type = 'button';
+            copyButton.setAttribute('aria-label', `Copy ${text} calendar link`);
+            copyButton.innerHTML = '<i class="hgi-stroke hgi-copy"></i>';
+            copyButton.onclick = async () => {
+                const calendarUrl = new URL(`.${url}`, window.location.href);
+                try {
+                    await navigator.clipboard.writeText(calendarUrl.href);
+                    showToast('Copied!');
+                } catch (error) {
+                    showToast('Could not copy link');
+                }
+            };
+
+            actions.append(selectButton, copyButton);
+            container.appendChild(actions);
         });
+
+        const initialButton = [...container.querySelectorAll('.sport-btn')]
+            .find(button => button.textContent.trim().toLowerCase() === 'badminton');
+        if (initialButton) {
+            initialButton.classList.add('active');
+            initialButton.setAttribute('aria-pressed', 'true');
+        }
     </script>
 </body>
 </html>
