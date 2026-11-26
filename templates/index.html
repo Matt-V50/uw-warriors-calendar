@@ -110,15 +110,17 @@
         .copy-btn {
             display: flex;
             align-items: center;
-            padding: 1rem 1.5rem;
+            justify-content: center;
+            flex: 0 0 2.75rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            padding: 0;
             background: var(--warriors-black);
             color: var(--warriors-gold);
             border: 2px solid var(--warriors-gold);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 1.5rem;
-            font-weight: bold;
         }
 
         .copy-btn:hover {
@@ -128,7 +130,7 @@
         }
 
         .copy-btn i {
-            font-size: 1.5rem;
+            font-size: 1.125rem;
         }
 
         .toast {
@@ -182,10 +184,6 @@
                 padding: 0.75rem 1rem;
             }
 
-            .copy-btn {
-                padding: 0.75rem;
-            }
-
             .buttons-container {
                 align-self: center;
             }
@@ -221,6 +219,7 @@
     <script>
         const links = {{ links | tojson }};
         const calendarIds = {{ calendar_ids | tojson }};
+        const initialSport = {{ initial_sport | tojson }};
 
         const toast = document.getElementById('toast');
         const container = document.getElementById('buttons');
@@ -279,7 +278,7 @@
         });
 
         const initialButton = [...container.querySelectorAll('.sport-btn')]
-            .find(button => button.textContent.trim().toLowerCase() === 'badminton');
+            .find(button => button.textContent.trim().toLowerCase() === initialSport);
         if (initialButton) {
             initialButton.classList.add('active');
             initialButton.setAttribute('aria-pressed', 'true');
