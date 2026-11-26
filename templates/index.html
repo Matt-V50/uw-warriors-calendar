@@ -73,7 +73,10 @@
 
         .sport-actions {
             display: flex;
-            gap: 0.5rem;
+            overflow: hidden;
+            border: 2px solid var(--warriors-gold);
+            border-radius: 8px;
+            background: var(--warriors-black);
         }
 
         .sport-btn {
@@ -84,8 +87,7 @@
             padding: 1rem 1.5rem;
             background: var(--warriors-black);
             color: var(--warriors-gold);
-            border: 2px solid var(--warriors-gold);
-            border-radius: 8px;
+            border: 0;
             cursor: pointer;
             transition: all 0.2s;
             font-size: 1rem;
@@ -100,7 +102,7 @@
         }
 
         .sport-btn:hover {
-            transform: translateY(-2px);
+            background: var(--warriors-dark-gold);
         }
 
         .sport-btn i {
@@ -113,12 +115,11 @@
             justify-content: center;
             flex: 0 0 2.75rem;
             width: 2.75rem;
-            height: 2.75rem;
             padding: 0;
             background: var(--warriors-black);
             color: var(--warriors-gold);
-            border: 2px solid var(--warriors-gold);
-            border-radius: 8px;
+            border: 0;
+            border-left: 1px solid var(--warriors-gold);
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -126,11 +127,20 @@
         .copy-btn:hover {
             background: var(--warriors-gold);
             color: var(--warriors-black);
-            transform: translateY(-2px);
         }
 
         .copy-btn i {
             font-size: 1.125rem;
+        }
+
+        .copy-btn svg {
+            width: 1.125rem;
+            height: 1.125rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .toast {
@@ -262,7 +272,12 @@
             copyButton.className = 'copy-btn';
             copyButton.type = 'button';
             copyButton.setAttribute('aria-label', `Copy ${text} calendar link`);
-            copyButton.innerHTML = '<i class="hgi-stroke hgi-copy"></i>';
+            copyButton.innerHTML = `
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="8" y="8" width="12" height="13" rx="2"></rect>
+                    <path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2"></path>
+                </svg>
+            `;
             copyButton.onclick = async () => {
                 const calendarUrl = new URL(`.${url}`, window.location.href);
                 try {

@@ -20,6 +20,7 @@ def index():
             links.append({ "text": calendar.stem, 
                           "url": f"/{calendar.stem}", 
                           "sport": sport_map.get(calendar.stem, "workout-run") })
+    links.sort(key=lambda link: {"badminton": 0, "pickleball": 1}.get(link["text"].lower(), 2))
     return render_template(
         'index.html',
         links=links,
