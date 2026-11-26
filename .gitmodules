@@ -1,0 +1,3 @@
+[submodule "ICS-Sync"]
+	path = ICS-Sync
+	url = https://github.com/Matt-V50/ICS-Sync.git
